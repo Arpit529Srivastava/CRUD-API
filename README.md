@@ -41,6 +41,7 @@ This project features a simple CRUD API built using Go and the Gin framework. It
     "author": "string",
     "quantity": integer
   }
+  ```
 - **Response**:
   -**Status**: `201 Created`
   -**Body**: `The newly created book object.`
@@ -79,7 +80,6 @@ This project features a simple CRUD API built using Go and the Gin framework. It
   - **Status**: 400 Bad Request (if query parameter is missing)
   - **Status**: 404 Not Found (if the book is not found)
   - **Body**: The updated book object.
-  - 
 ## Clone the Repository
 
 To get started with this project, clone the repository using:
