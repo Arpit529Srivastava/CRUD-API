@@ -79,3 +79,34 @@ This project features a simple CRUD API built using Go and the Gin framework. It
   - **Status**: 400 Bad Request (if query parameter is missing)
   - **Status**: 404 Not Found (if the book is not found)
   - **Body**: The updated book object.
+  - 
+## Clone the Repository
+
+To get started with this project, clone the repository using:
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+``` 
+
+## Setup
+
+Before running the application, make sure to tidy up your Go modules by running:
+
+```bash
+go mod tidy
+```
+## Get All Books
+```bash
+curl http://localhost:8080/books
+```
+## Return a Book
+To return a book with ID 2, run:
+```bash
+curl -X PATCH "http://localhost:8080/return?id=2"
+```
+## Checkout a Book
+To checkout a book with ID 2, run:
+```bash
+curl -X PATCH "http://localhost:8080/checkout?id=2"
+```
