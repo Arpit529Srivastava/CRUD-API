@@ -85,7 +85,7 @@ This project features a simple CRUD API built using Go and the Gin framework. It
 To get started with this project, clone the repository using:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Arpit529Srivastava/CRUD-API.git
 cd your-repo
 ``` 
 
