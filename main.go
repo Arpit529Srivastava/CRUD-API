@@ -20,7 +20,7 @@ var books = []book{
 }
 
 func getBooks(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, books)
+	c.JSON(http.StatusOK, books)
 }
 
 func createBook(c *gin.Context) {
@@ -29,17 +29,17 @@ func createBook(c *gin.Context) {
 		return
 	}
 	books = append(books, newBook)
-	c.IndentedJSON(http.StatusCreated, newBook)
+	c.JSON(http.StatusCreated, newBook)
 }
 
 func bookById(c *gin.Context) {
 	id := c.Param("id")
 	book, err := getBookById(id)
 	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "book not found"})
+		c.JSON(http.StatusNotFound, gin.H{"message": "book not found"})
 		return
 	}
-	c.IndentedJSON(http.StatusOK, book)
+	c.JSON(http.StatusOK, book)
 }
 
 func getBookById(id string) (*book, error) {
@@ -53,35 +53,35 @@ func getBookById(id string) (*book, error) {
 func checkoutBook(c *gin.Context) {
 	id, ok := c.GetQuery("id")
 	if !ok {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing query parameter"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing query parameter"})
 		return
 	}
 	book, err := getBookById(id)
 	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "book not found"})
+		c.JSON(http.StatusNotFound, gin.H{"message": "book not found"})
 		return
 	}
 	if book.Quantity <= 0 {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "book not available"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "book not available"})
 		return
 	}
 	book.Quantity -= 1
-	c.IndentedJSON(http.StatusOK, book)
+	c.JSON(http.StatusOK, book)
 
 }
 func returnBook(c *gin.Context) {
 	id, ok := c.GetQuery("id")
 	if !ok {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing query parameter"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing query parameter"})
 		return
 	}
 	book, err := getBookById(id)
 	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "book not found"})
+		c.JSON(http.StatusNotFound, gin.H{"message": "book not found"})
 		return
 	}
 	book.Quantity += 1
-	c.IndentedJSON(http.StatusOK, book)
+	c.JSON(http.StatusOK, book)
 
 }
 func main() {
